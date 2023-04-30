@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Modules - Show modal windows</title>
+</head>
+<body>
+  <div class="container" id="container">
+    <h1>Создание уже и не такого простого модального окошка!</h1>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam fuga sunt voluptas, ullam, sed consequuntur ab illo
+      veniam ad totam alias voluptatibus sequi officiis, unde autem reiciendis magnam labore voluptatum?</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam fuga sunt voluptas, ullam, sed consequuntur ab illo
+      veniam ad totam alias voluptatibus sequi officiis, unde autem reiciendis magnam labore voluptatum?</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam fuga sunt voluptas, ullam, sed consequuntur ab illo
+      veniam ad totam alias voluptatibus sequi officiis, unde autem reiciendis magnam labore voluptatum?</p>
+    <p class="btn"><a href="#" data-supermodal="my-custom-modal" class="modal-open" title="Покажите мне модальное окошко">Открыть окно</a></p>
+      <p class="btn"><a href="#" data-supermodal="my-custom-modal-2" data-supermodal-title="Модальное окно с видео" data-supermodal-content="Учебный видеоролик" class="modal-open">Открыть окно</a></p>
+        <p class="btn"><a href="#" data-supermodal="my-custom-modal-3" data-supermodal-title="Модальное окно с картинкой" data-supermodal-content="Roadmap to understand how the Javascript works" class="modal-open">Открыть окно</a></p>
+          <p class="btn"><a href="#" data-supermodal="my-custom-modal-4" data-supermodal-title="Модальное окно благодарности" data-supermodal-content="Спасибо, что выбрали нас. Старт следующего этапа обучения ожидается уже скоро..." class="modal-open">Открыть окно</a></p>
+    <!-- <div class="modal-data"></div> не используется-->
+    <!-- <p class="btn"><a href="#" id="clear-data" class="clear-data" style="display: none;">Очистить данные</a></p> не используется-->
+
+  </div>
+
+
+  <div class="modal-overlay modal_closed" id="modal-overlay"></div>
+<!-- Modal window #1 (with inputs) -->
+  <div class="modal modal_closed" id="my-custom-modal">
+    <header class="modal__header">
+      <a href="#" class="modal__close" id="modal-close" title="Закрыть модальное окно">Закрыть</a>
+      <h2 class="modal-title">Введите данные</h2>
+    </header>
+
+    <main class="modal__content">
+      <div class="form-field">
+        <label for="name">Ваше имя:</label>
+        <input required class="input__default" type="text" id="name" name="name">
+      </div>
+      <div class="form-field">
+        <label>Ваш день рождения:</label>
+        <input required type="number" class="input__date-birth" id="birth-day" name="name" placeholder="День"> -
+        <input required type="number" class="input__date-birth" id="birth-month" name="name" placeholder="Месяц"> -
+        <input required type="number" class="input__date-birth" id="birth-year" name="name" placeholder="Год">
+      </div>
+    </main>
+
+    <footer class="modal__footer">
+      <button id="modal-cancel" class="modal__cancel" title="Отмена">Отмена</button>
+      <button id="modal-save" class="modal__save" title="Сохранить" disabled>Сохранить данные</button>
+    </footer>
+  </div>
+    <!-- Modal window #2 (with video) -->
+    <div class="modal modal_closed" id="my-custom-modal-2">
+      <header class="modal__header">
+        <a href="#" class="modal__close" id="modal-close" title="Закрыть модальное окно">Закрыть</a>
+        <h2 class="modal-title">Модальное окно с видео</h2>
+        <p class="modal-content">Учебный видеоролик</p>
+      </header>
+      <main class="modal__content">
+        <!-- <img class="modal-image" src="https://pbs.twimg.com/media/ELtZ6n4WkAAZs8n?format=jpg&name=4096x4096" alt="Roadmap"> -->
+        <iframe class="modal-video" width="600" height="350" src="https://www.youtube.com/embed/QSNa8U1yGrM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </main>
+    </div>
+
+        <!-- Modal window #3 (with image) -->
+        <div class="modal modal_closed" id="my-custom-modal-3">
+          <header class="modal__header">
+            <a href="#" class="modal__close" id="modal-close" title="Закрыть модальное окно">Закрыть</a>
+            <h2 class="modal-title">Модальное окно с картинкой</h2>
+            <p class="modal-content">Roadmap to understand how the Javascript language works</p>
+          </header>
+          <main class="modal__content">
+            <img class="modal-image" src="https://pbs.twimg.com/media/ELtZ6n4WkAAZs8n?format=jpg&name=4096x4096" alt="Roadmap">
+          </main>
+        </div>
+            <!-- Modal window #4 (with thanks) - EMPTY (no HTML layout with id="my-custom-modal-4" by condition) -->
+            <!-- .............................................................. -->
+
+    </div>
+  <script src="scripts.js"></script>
+</body>
+</html>
