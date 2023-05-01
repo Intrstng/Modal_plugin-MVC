@@ -42,7 +42,7 @@
             <p class="modal-content"></p>
           </header>
           <main class="modal__content">
-            <p class="modal-text" ></p>;
+            <p class="modal-text" ></p>
           </main>`;
           document.body.append(modal);
       }
