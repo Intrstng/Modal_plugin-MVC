@@ -19,18 +19,16 @@
     <p class="btn"><a href="#" data-supermodal="my-custom-modal" class="modal-open" title="Покажите мне модальное окошко">Открыть окно</a></p>
       <p class="btn"><a href="#" data-supermodal="my-custom-modal-2" data-supermodal-title="Модальное окно с видео" data-supermodal-content="Учебный видеоролик" class="modal-open">Открыть окно</a></p>
         <p class="btn"><a href="#" data-supermodal="my-custom-modal-3" data-supermodal-title="Модальное окно с картинкой" data-supermodal-content="Roadmap to understand how the Javascript works" class="modal-open">Открыть окно</a></p>
-          <p class="btn"><a href="#" data-supermodal="my-custom-modal-4" data-supermodal-title="Модальное окно благодарности" data-supermodal-content="Спасибо, что выбрали нас. Старт следующего этапа обучения ожидается уже скоро..." class="modal-open">Открыть окно</a></p>
+          <p class="btn"><a href="#" data-supermodal="my-custom-modal-4" data-supermodal-title="Модальное окно с анонсом" data-supermodal-content="Старт следующего этапа обучения ожидается уже скоро..." class="modal-open">Открыть окно</a></p>
   </div>
-
-
-  <div class="modal-overlay modal_closed" id="modal-overlay"></div>
+<!-- Overlay -->
+  <div class="modal-overlay modal_closed" id="modal-overlay"></div> 
 <!-- Modal window #1 (with inputs) -->
   <div class="modal modal_closed" id="my-custom-modal">
     <header class="modal__header">
       <a href="#" class="modal__close" title="Закрыть модальное окно">Закрыть</a>
       <h2 class="modal-title">Введите данные</h2>
     </header>
-
     <main class="modal__content">
       <div class="form-field">
         <label for="name">Ваше имя:</label>
@@ -43,7 +41,6 @@
         <input required type="number" class="input__date-birth" id="birth-year" name="name" placeholder="Год">
       </div>
     </main>
-
     <footer class="modal__footer">
       <button id="modal-cancel" class="modal__cancel" title="Отмена">Отмена</button>
       <button id="modal-save" class="modal__save" title="Сохранить" disabled>Сохранить данные</button>
@@ -57,7 +54,7 @@
         <p class="modal-content"></p>
       </header>
       <main class="modal__content">
-        <iframe class="modal-video"  width="600" height="350" src="https://www.youtube.com/embed/kbOqAXEB6ok" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe class="modal-video" width="600" height="350" src="https://www.youtube.com/embed/kbOqAXEB6ok" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </main>
     </div>
         <!-- Modal window #3 (with image) -->
@@ -71,9 +68,9 @@
             <img class="modal-image" src="https://pbs.twimg.com/media/ELtZ6n4WkAAZs8n?format=jpg&name=4096x4096" alt="Roadmap">
           </main>
         </div>
-            <!-- Modal window #4 (with thanks) - is EMPTY (no HTML layout with id="my-custom-modal-4" by condition) -->
-            <!-- .................................................................................................. -->
-            <!-- .................................................................................................. -->
+            <!-- Modal window #4 (with thanks) - is EMPTY (no HTML layout with id="my-custom-modal-4" by condition of the task) -->
+            <!-- .............................................................................................................. -->
+            <!-- .............................................................................................................. -->
     </div>
   <script src="scripts.js"></script>
 </body>
