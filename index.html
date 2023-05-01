@@ -10,7 +10,6 @@
 <body>
   <div class="container" id="container">
     <h1>Создание уже и не такого простого модального окошка!</h1>
-
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam fuga sunt voluptas, ullam, sed consequuntur ab illo
       veniam ad totam alias voluptatibus sequi officiis, unde autem reiciendis magnam labore voluptatum?</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam fuga sunt voluptas, ullam, sed consequuntur ab illo
@@ -21,9 +20,6 @@
       <p class="btn"><a href="#" data-supermodal="my-custom-modal-2" data-supermodal-title="Модальное окно с видео" data-supermodal-content="Учебный видеоролик" class="modal-open">Открыть окно</a></p>
         <p class="btn"><a href="#" data-supermodal="my-custom-modal-3" data-supermodal-title="Модальное окно с картинкой" data-supermodal-content="Roadmap to understand how the Javascript works" class="modal-open">Открыть окно</a></p>
           <p class="btn"><a href="#" data-supermodal="my-custom-modal-4" data-supermodal-title="Модальное окно благодарности" data-supermodal-content="Спасибо, что выбрали нас. Старт следующего этапа обучения ожидается уже скоро..." class="modal-open">Открыть окно</a></p>
-    <!-- <div class="modal-data"></div> не используется-->
-    <!-- <p class="btn"><a href="#" id="clear-data" class="clear-data" style="display: none;">Очистить данные</a></p> не используется-->
-
   </div>
 
 
@@ -31,7 +27,7 @@
 <!-- Modal window #1 (with inputs) -->
   <div class="modal modal_closed" id="my-custom-modal">
     <header class="modal__header">
-      <a href="#" class="modal__close" id="modal-close" title="Закрыть модальное окно">Закрыть</a>
+      <a href="#" class="modal__close" title="Закрыть модальное окно">Закрыть</a>
       <h2 class="modal-title">Введите данные</h2>
     </header>
 
@@ -56,30 +52,28 @@
     <!-- Modal window #2 (with video) -->
     <div class="modal modal_closed" id="my-custom-modal-2">
       <header class="modal__header">
-        <a href="#" class="modal__close" id="modal-close" title="Закрыть модальное окно">Закрыть</a>
-        <h2 class="modal-title">Модальное окно с видео</h2>
-        <p class="modal-content">Учебный видеоролик</p>
+        <a href="#" class="modal__close" title="Закрыть модальное окно">Закрыть</a>
+        <h2 class="modal-title"></h2>
+        <p class="modal-content"></p>
       </header>
       <main class="modal__content">
-        <!-- <img class="modal-image" src="https://pbs.twimg.com/media/ELtZ6n4WkAAZs8n?format=jpg&name=4096x4096" alt="Roadmap"> -->
-        <iframe class="modal-video" width="600" height="350" src="https://www.youtube.com/embed/QSNa8U1yGrM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe class="modal-video"  width="600" height="350" src="https://www.youtube.com/embed/kbOqAXEB6ok" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </main>
     </div>
-
         <!-- Modal window #3 (with image) -->
         <div class="modal modal_closed" id="my-custom-modal-3">
           <header class="modal__header">
-            <a href="#" class="modal__close" id="modal-close" title="Закрыть модальное окно">Закрыть</a>
-            <h2 class="modal-title">Модальное окно с картинкой</h2>
-            <p class="modal-content">Roadmap to understand how the Javascript language works</p>
+            <a href="#" class="modal__close" title="Закрыть модальное окно">Закрыть</a>
+            <h2 class="modal-title"></h2>
+            <p class="modal-content"></p>
           </header>
           <main class="modal__content">
             <img class="modal-image" src="https://pbs.twimg.com/media/ELtZ6n4WkAAZs8n?format=jpg&name=4096x4096" alt="Roadmap">
           </main>
         </div>
-            <!-- Modal window #4 (with thanks) - EMPTY (no HTML layout with id="my-custom-modal-4" by condition) -->
-            <!-- .............................................................. -->
-
+            <!-- Modal window #4 (with thanks) - is EMPTY (no HTML layout with id="my-custom-modal-4" by condition) -->
+            <!-- .................................................................................................. -->
+            <!-- .................................................................................................. -->
     </div>
   <script src="scripts.js"></script>
 </body>

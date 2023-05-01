@@ -123,8 +123,6 @@ body {
   padding: 0 0 10px;
 }
 
-.form-field label {}
-
 .form-field input {
   border: 1px gray solid;
   border-radius: 5px;
