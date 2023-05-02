@@ -6,12 +6,12 @@
       let myModalOverlay = null;
       let actualModalWindow = null;
     }
-      ModalView.prototype.init = function (container, overlay) {
+      ModalView.prototype.init = function (container, overlay, idName) {
         if (container) {
           myModalWindowContainer = container; // контейнер модального окна (если модальное окно присутствует в верстке)
         } else {
-          this.buildModalWindow(); // если модальное окно не присутствует в верстке, создаем верстку модального окна
-          myModalWindowContainer = document.getElementById('my-custom-modal-4'); // контейнер модального окна
+          this.buildModalWindow(idName); // если модальное окно не присутствует в верстке, создаем верстку модального окна
+          myModalWindowContainer = document.getElementById(idName); // контейнер модального окна
         }
         myModalOverlay = overlay; // overlay 
       }
@@ -31,9 +31,9 @@
         myModalWindowContainer.querySelector('.modal-content').textContent = content;
       }
 
-      ModalView.prototype.buildModalWindow = function () {
+      ModalView.prototype.buildModalWindow = function (idName) {
         const modal = document.createElement('div');
-        modal.id = 'my-custom-modal-4';
+        modal.id = idName;
         modal.className = 'modal modal_closed';
         modal.innerHTML = `
           <header class="modal__header">
@@ -56,17 +56,17 @@
         myView = view;
       }
 
-      ModalModel.prototype.modalShow = function (modalWindow, modalTitle, modalContent) {
+      ModalModel.prototype.modalShow = function (modalTitle, modalContent) {
         if (modalTitle === undefined && modalContent === undefined) {
-          myView.modalShow(modalWindow);
+          myView.modalShow();
         } else {
-            myView.modalShow(modalWindow);
+            myView.modalShow();
             this.fillModalWindow(modalTitle, modalContent);
           }
       }
 
-      ModalModel.prototype.modalHide = function (modalWindow) {
-        myView.modalHide(modalWindow);
+      ModalModel.prototype.modalHide = function () {
+        myView.modalHide();
       }
 
       ModalModel.prototype.fillModalWindow = function (title, content) {
@@ -95,25 +95,24 @@
         openModalButtons.forEach(btn => {
           btn.addEventListener('click', (e) => {
             e.preventDefault();
-            this.openModal(e, e.target.dataset.supermodal, e.target.dataset.supermodalTitle, e.target.dataset.supermodalContent); // все datasets передаются в Model, т.к. там будет проводится вся логическая проверка         
+ 
+            this.openModal(e.target.dataset.supermodalTitle, e.target.dataset.supermodalContent); // все datasets передаются в Model, т.к. там будет проводится вся логическая проверка         
             btnClose = document.querySelector(`#${e.target.dataset.supermodal} .modal__close`);
-            btnClose.addEventListener("click", (e) => this.hideModal(e, e.target.dataset.supermodal));
+            btnClose.addEventListener('click', () => this.hideModal());
             if (e.target.dataset.supermodalTitle === undefined || e.target.dataset.supermodalContent === undefined) { // это условие находится в контроллере, т.к. по его результату происходит добавление или нет addEventListener на элемент
               btnCancel = document.querySelector(`#${e.target.dataset.supermodal} .modal__cancel`);
-              btnCancel.addEventListener('click', (e) => this.hideModal(e, e.target.dataset.supermodal));
+              btnCancel.addEventListener('click', () => this.hideModal());
             }      
           });
         });
       }
 
-      ModalController.prototype.openModal = function(e, modalWindow, modalTitle, modalContent) {
-        e.preventDefault();
-        myModel.modalShow(modalWindow, modalTitle, modalContent);
+      ModalController.prototype.openModal = function(title, content) {
+        myModel.modalShow(title, content);
       }
 
-      ModalController.prototype.hideModal = function(e, modalWindow) {
-        e.preventDefault();
-        myModel.modalHide(modalWindow);
+      ModalController.prototype.hideModal = function() {
+        myModel.modalHide();
       }
     /* ------ end controller ----- */
     return {
@@ -137,7 +136,7 @@
         openModalButtons.forEach(btn => {
           btn.addEventListener('click', (e) => {
             e.preventDefault();
-            appModalView.init(document.getElementById(btn.dataset.supermodal), overlay);
+            appModalView.init(document.getElementById(btn.dataset.supermodal), overlay, btn.dataset.supermodal);
           });
         });
         
