@@ -90,21 +90,33 @@
       ModalController.prototype.init = function (model, containerMain) {
         myModel = model; // это связь с моделью
         myContainer = containerMain; // это контейнер (он включает в себя элементы - кнопки 'Открыть окно')
-        openModalButtons = containerMain.querySelectorAll('a[data-supermodal]'); // кнопки открыть (с атрибутом data-supermodal)
-
-        openModalButtons.forEach(btn => {
-          btn.addEventListener('click', (e) => {
-            e.preventDefault();
- 
-            this.openModal(e.target.dataset.supermodalTitle, e.target.dataset.supermodalContent); // все datasets передаются в Model, т.к. там будет проводится вся логическая проверка         
-            btnClose = document.querySelector(`#${e.target.dataset.supermodal} .modal__close`);
-            btnClose.addEventListener('click', () => this.hideModal());
-            if (e.target.dataset.supermodalTitle === undefined || e.target.dataset.supermodalContent === undefined) { // это условие находится в контроллере, т.к. по его результату происходит добавление или нет addEventListener на элемент
-              btnCancel = document.querySelector(`#${e.target.dataset.supermodal} .modal__cancel`);
-              btnCancel.addEventListener('click', () => this.hideModal());
-            }      
-          });
+        //openModalButtons = containerMain.querySelectorAll('a[data-supermodal]'); // кнопки открыть (с атрибутом data-supermodal)
+        
+        // Через делегирование событий
+        myContainer.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (!e.target.closest('a[data-supermodal]')) return;
+          this.openModal(e.target.dataset.supermodalTitle, e.target.dataset.supermodalContent);
+          btnClose = document.querySelector(`#${e.target.dataset.supermodal} .modal__close`);
+          btnClose.addEventListener('click', () => this.hideModal());
+          if (e.target.dataset.supermodalTitle === undefined && e.target.dataset.supermodalContent === undefined) {
+            btnCancel = document.querySelector(`#${e.target.dataset.supermodal} .modal__cancel`);
+            btnCancel.addEventListener('click', () => this.hideModal());
+          }
         });
+        // Также можно было и таким образом
+          // openModalButtons.forEach(btn => {
+          //   btn.addEventListener('click', (e) => {
+          //     e.preventDefault();
+          //     this.openModal(e.target.dataset.supermodalTitle, e.target.dataset.supermodalContent); // все datasets передаются в Model, т.к. там будет проводится вся логическая проверка         
+          //     btnClose = document.querySelector(`#${e.target.dataset.supermodal} .modal__close`);
+          //     btnClose.addEventListener('click', () => this.hideModal());
+          //     if (e.target.dataset.supermodalTitle === undefined || e.target.dataset.supermodalContent === undefined) { // это условие находится в контроллере, т.к. по его результату происходит добавление или нет addEventListener на элемент
+          //       btnCancel = document.querySelector(`#${e.target.dataset.supermodal} .modal__cancel`);
+          //       btnCancel.addEventListener('click', () => this.hideModal());
+          //     }      
+          //   });
+          // });
       }
 
       ModalController.prototype.openModal = function(title, content) {
@@ -124,7 +136,7 @@
         const appModalModel = new ModalModel();
         const appModalController = new ModalController();
         const overlay = document.getElementById('modal-overlay'); // поиск через document т.к. оверлей согласно верстке не входит в container;
-        const openModalButtons = container.querySelectorAll('a[data-supermodal]');
+      //  const openModalButtons = container.querySelectorAll('a[data-supermodal]');
    
         // Вызываем init-методы
         // В экземпляр appModalView класса ModalView (Представление) передаем контейнер и оверлей, т.е. аналог вызова (appModalView.init(container, overlay)) для каждого отдельного модального окна;
@@ -133,12 +145,20 @@
             // }); // не сработало, т.к. в таком исполнении во view запоминается последнее переданное значение из массива
         // Поэтому в инициализации вынуждены использовать метод addEventListener('click', fn), теперь инициализация View будет происходить при каждом клике по кнопкам 'Открыть окно' 
         // можно было сделать инициализацию View из контроллера (при клике по кнопке 'Открыть окно'), но тогда пришлось бы пробрасывать контейнер модального окна и оверлей через Model во View, но так делать не желательно т.к. Model не должна ничего знать про верстку
-        openModalButtons.forEach(btn => {
-          btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            appModalView.init(document.getElementById(btn.dataset.supermodal), overlay, btn.dataset.supermodal);
-          });
+        
+        // Через делегирование событий
+        container.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (!e.target.closest('a[data-supermodal]')) return;
+          appModalView.init(document.getElementById(e.target.dataset.supermodal), overlay, e.target.dataset.supermodal);
         });
+        // Также можно было и таким образом
+          // openModalButtons.forEach(btn => {
+          //   btn.addEventListener('click', (e) => {
+          //     e.preventDefault();
+          //     appModalView.init(document.getElementById(btn.dataset.supermodal), overlay, btn.dataset.supermodal);
+          //   });
+          // });
         
         // В экземпляр appModalModel класса appModalModel (Модель) передаем экземпляр представления
         appModalModel.init(appModalView);
